@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\dist",
-    "\\src"
+    "\\src",
+    "\\src\\client"
   ],
-  "SelectedNode": "\\src\\client",
+  "SelectedNode": "\\src\\client\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }
