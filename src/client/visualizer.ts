@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GUI} from "dat.gui";
 
 export class visualizer {
 
@@ -61,6 +62,22 @@ export class visualizer {
             this.scene.add(this.headlight)
         }
 
+        let view = this
+        const gui = new GUI()
+        gui.add(this, "current", ["Perspective", "Front", "Top", "Right"]).onChange(function(){view.render()})
+
+        window.addEventListener('resize', onWindowResize, false)
+        function onWindowResize() {
+            view.camera.aspect = window.innerWidth / window.innerHeight
+            view.camera.updateProjectionMatrix()
+            view.renderer.setSize(window.innerWidth, window.innerHeight)
+            view.render()
+        }
+
+    }
+
+    headlight_update() : void{
+        this.headlight.position.set(this.camera.position.x, this.camera.position.y, this.camera.position.z)
     }
 
     render() : void{
@@ -73,10 +90,6 @@ export class visualizer {
         } else {
             this.renderer.render(this.scene, this.camera_top)
         }
-    }
-
-    headlight_update() : void{
-        this.headlight.position.set(this.camera.position.x, this.camera.position.y, this.camera.position.z)
     }
 
 }

@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7cb8abb-603e-4975-8871-ca01ba42fcfc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/visualizer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/public/ring_9.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/public/ring_9_bump.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/CarveRing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/CarveRing.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/visualizer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/visualizer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695575738944</updated>
-      <workItem from="1695575740756" duration="16299000" />
+      <workItem from="1695575740756" duration="19479000" />
+      <workItem from="1695607109115" duration="16431000" />
     </task>
     <servers />
   </component>
@@ -79,5 +80,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1695641591644">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1032@0.0.1920.1032" timestamp="1695641591644" />
+    <state x="616" y="238" key="run.anything.popup" timestamp="1695783560874">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="616" y="238" key="run.anything.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1695783560874" />
   </component>
 </project>
