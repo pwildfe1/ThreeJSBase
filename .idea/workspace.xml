@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7cb8abb-603e-4975-8871-ca01ba42fcfc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/client/public/ring_9.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/client/public/ring_9_bump.obj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/CarveRing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/CarveRing.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/visualizer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/visualizer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +47,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pwlearningNodeJS" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -63,7 +60,11 @@
       <option name="presentableId" value="Default" />
       <updated>1695575738944</updated>
       <workItem from="1695575740756" duration="19479000" />
-      <workItem from="1695607109115" duration="16431000" />
+      <workItem from="1695607109115" duration="17058000" />
+      <workItem from="1696032796249" duration="12787000" />
+      <workItem from="1696181730058" duration="623000" />
+      <workItem from="1696462273585" duration="850000" />
+      <workItem from="1697072010813" duration="1077000" />
     </task>
     <servers />
   </component>
@@ -83,10 +84,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1695641591644">
+    <state x="740" y="271" key="FileChooserDialogImpl" timestamp="1697072324963">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1032@0.0.1920.1032" timestamp="1695641591644" />
+    <state x="740" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1697072324963" />
+    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1696088299453">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="565" y="126" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1032@0.0.1920.1032" timestamp="1696088299453" />
     <state x="616" y="238" key="run.anything.popup" timestamp="1695783560874">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
