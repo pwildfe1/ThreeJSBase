@@ -13,11 +13,13 @@ export class visualizer {
     canvas: HTMLCanvasElement;
     headlight: THREE.PointLight;
     controls: OrbitControls;
+    radius: number;
+    angle: number;
     resoX: number;
     resoY: number;
     current: string;
 
-    constructor(CanvasId = "", attach_light = true){
+    constructor(CanvasId = "", attach_light = true, radius = 40){
         this.scene = new THREE.Scene();
         this.camera_front = new THREE.OrthographicCamera(-20, 20, 20, -20, .1, 200)
         this.camera_front.position.set(30, 0, 0)
@@ -28,6 +30,9 @@ export class visualizer {
         this.camera_right = new THREE.OrthographicCamera(-20, 20, 20, -20, .1, 200)
         this.camera_right.position.set(0, 0, 30)
         this.camera_right.lookAt(new THREE.Vector3())
+
+        this.radius = radius;
+        this.angle = .125;
 
         if (CanvasId != "") {
             this.canvas = document.getElementById(CanvasId) as HTMLCanvasElement
@@ -50,12 +55,12 @@ export class visualizer {
             1000
         )
 
-        this.camera.position.set(0, 15, 30)
+        this.camera.position.set(this.radius * Math.cos(this.angle * 2 * Math.PI), this.radius/3, this.radius * Math.cos(this.angle * 2 * Math.PI))
         this.camera.lookAt(new THREE.Vector3())
         this.current = "Perspective"
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-        this.headlight = new THREE.PointLight(0xffffff, 100)
+        this.headlight = new THREE.PointLight(0xffffff, 1000, 100)
 
         if (attach_light){
             this.headlight.position.set(this.camera.position.x, this.camera.position.y, this.camera.position.z)
@@ -63,8 +68,8 @@ export class visualizer {
         }
 
         let view = this
-        const gui = new GUI()
-        gui.add(this, "current", ["Perspective", "Front", "Top", "Right"]).onChange(function(){view.render()})
+        // const gui = new GUI()
+        // gui.add(this, "current", ["Perspective", "Front", "Top", "Right"]).onChange(function(){view.render()})
 
         window.addEventListener('resize', onWindowResize, false)
         function onWindowResize() {

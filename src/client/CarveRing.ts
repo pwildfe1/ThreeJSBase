@@ -2,11 +2,15 @@ import * as THREE from "three";
 import {visualizer} from "./visualizer";
 import * as BGU from "three/examples/jsm/utils/BufferGeometryUtils";
 import {GUI} from "dat.gui";
-import {BufferAttribute, InterleavedBufferAttribute} from "three";
+import {BufferAttribute, Color, InterleavedBufferAttribute} from "three";
+import {OBJExporter} from "three/examples/jsm/exporters/OBJExporter";
+import * as fs from 'fs';
 
 export class CarveRing {
 
     Visualizer: visualizer
+    Texture: THREE.CubeTexture
+    MaterialChoice: string
     Body: THREE.Mesh
     Baseline: string
     Phase: number
@@ -21,7 +25,10 @@ export class CarveRing {
     TopY: number
     gui: GUI
 
-    constructor(environment : visualizer, gui: GUI, body : THREE.Mesh, phase: number, freq: number, name: string, baseline:string){
+    private Exporter: OBJExporter
+    private MaterialOptions: Array<string>
+
+    constructor(environment : visualizer, texture: THREE.CubeTexture, gui: GUI, body : THREE.Mesh, phase: number, freq: number, name: string, baseline:string){
 
         this.Body = body
         this.Visualizer = environment
@@ -30,6 +37,9 @@ export class CarveRing {
         this.gui = gui
         this.Name = name
         this.Baseline = baseline
+        this.Texture = texture
+        this.MaterialOptions = ["Yellow Gold", "Rose Gold", "Silver"]
+        this.MaterialChoice = this.MaterialOptions[0]
 
         this.Radius = 0
         this.Height = 0
@@ -54,23 +64,13 @@ export class CarveRing {
         this.Radius = dimensions[0]/2
         this.Height = dimensions[1]
 
+        this.Exporter = new OBJExporter();
+
         // this.construct_gui()
         // let p = new THREE.PlaneGeometry(10, 10, 10)
         // this.Vertices = p.attributes.position
 
     }
-
-    // construct_gui() : void{
-    //
-    //     let view = this
-    //     let folder = view.gui.addFolder(this.Name)
-    //     // folder.add(view, "Phase", 0, .5, .01).onChange(function(){view.updateBody()})
-    //     folder.add(this, "Frequency", .5, 4, .5).onChange(function(){view.update()})
-    //
-    //     // let material_folder = folder.addFolder("Material")
-    //     // material_folder.add(this.Body.material, "")
-    //
-    // }
 
 
     update() : void {
@@ -89,8 +89,8 @@ export class CarveRing {
             let v = this.OriginalVertices[i]
             if (v.x > maximumX) { maximumX = v.x}
             if (v.x < minimumX) { minimumX = v.x}
-            if (v.y > maximumY && v.x < 0) { maximumY = v.y}
-            if (v.y < minimumY && v.x < 0) { minimumY = v.y}
+            if (v.y > maximumY) { maximumY = v.y}
+            if (v.y < minimumY) { minimumY = v.y}
         }
         this.TopY = maximumY
         this.BottomY = minimumY
@@ -120,7 +120,7 @@ export class CarveRing {
             let x = r * Math.cos(i/resoU * 2 * Math.PI)
             let z = r * Math.sin(i/resoU * 2 * Math.PI)
             let line_length = this.Height * .75 * Math.sin(i/resoU * 2 * Math.PI * this.Frequency + this.Phase * Math.PI)
-            let offset = 1
+            let offset = 0
             for(let j = 0; j < att_reso; j++){
                 if (this.Baseline == "bottom") {
                     pts.push(new THREE.Vector3(x, j / (att_reso - 1) * Math.abs(line_length - offset) + Math.abs(offset) + this.BottomY, z))
@@ -166,4 +166,44 @@ export class CarveRing {
 
     }
 
+    UpdateOpacity(opacity:number): void{
+
+        let reflect = .75
+        let emi = .6
+
+        let mat = new THREE.MeshPhongMaterial({color: 0xD9B665, transparent: true, specular: 0xFFFFFF, shininess: 1, emissive: 0xD9B665, emissiveIntensity: emi, reflectivity: reflect, side: 2})
+        if(this.MaterialChoice == "Rose Gold"){
+            mat = new THREE.MeshPhongMaterial({color: 0xD4B098, transparent: true, specular: 0xFFFFFF, shininess: 1, emissive: 0xD4B098, emissiveIntensity: emi, reflectivity: reflect, side: 2})
+        } else if (this.MaterialChoice == "Silver") {
+            mat = new THREE.MeshPhongMaterial({color: 0xc8cacb, transparent: true, specular: 0xFFFFFF, shininess: 1, emissive: 0xc8cacb, emissiveIntensity: emi, reflectivity: reflect, side: 2})
+        }
+
+        mat.envMap = this.Texture
+        mat.opacity = opacity
+        mat.needsUpdate = true
+        this.Visualizer.scene.remove(this.Body)
+        this.Body = new THREE.Mesh(this.Body.geometry, mat)
+        this.Body.geometry.computeVertexNormals()
+        this.Visualizer.scene.add(this.Body)
+
+    }
+
+    Download(): void{
+        let data = this.Exporter.parse(this.Body);
+        // fs.writeFileSync('./', 'utf-8');
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+        element.setAttribute('download', "ring.obj");
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+        document.body.removeChild(element);
+    }
+
+
+    Preview(): void{
+        this.UpdateOpacity(1.0)
+    }
 }
